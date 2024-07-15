@@ -1,4 +1,4 @@
-package com.yunho.worktimemanagement.data
+package com.yunho.worktimemanagement.data.slack
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
