@@ -1,6 +1,6 @@
 package com.yunho.worktimemanagement.presentation
 
-import com.yunho.worktimemanagement.data.SlackRepository
+import com.yunho.data.SlackRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

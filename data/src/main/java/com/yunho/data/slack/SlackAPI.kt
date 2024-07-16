@@ -1,6 +1,6 @@
-package com.yunho.worktimemanagement.data.slack
+package com.yunho.data.slack
 
-import com.yunho.worktimemanagement.BuildConfig
+import com.yunho.data.BuildConfig
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -12,7 +12,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
-class SlackAPI {
+internal class SlackAPI {
 
     private val BASEURL: String = "https://hooks.slack.com/services/"
     val mAPI: API

@@ -1,7 +1,7 @@
-package com.yunho.worktimemanagement.data
+package com.yunho.data
 
-import com.yunho.worktimemanagement.data.slack.SendSlackEntity
-import com.yunho.worktimemanagement.data.slack.SlackRemoteRepository
+import com.yunho.data.slack.SendSlackEntity
+import com.yunho.data.slack.SlackRemoteRepository
 import io.reactivex.Single
 
 class SlackRepository {

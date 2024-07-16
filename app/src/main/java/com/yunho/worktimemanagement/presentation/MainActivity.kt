@@ -2,8 +2,9 @@ package com.yunho.worktimemanagement.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.yunho.worktimemanagement.R
 import com.yunho.worktimemanagement.databinding.ActivityMainBinding
+import com.yunho.worktimemanagement.presentation.Contract
+import com.yunho.worktimemanagement.presentation.Presenter
 
 class MainActivity : AppCompatActivity(), Contract.View {
 
