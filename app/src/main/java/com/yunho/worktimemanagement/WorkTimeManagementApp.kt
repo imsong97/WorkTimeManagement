@@ -1,7 +1,7 @@
 package com.yunho.worktimemanagement
 
 import android.app.Application
-import com.yunho.data.remoteconfig.RemoteConfigUtil
+import com.yunho.worktimemanagement.utils.RemoteConfigUtil
 
 class WorkTimeManagementApp : Application() {
     override fun onCreate() {

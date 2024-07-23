@@ -1,9 +1,14 @@
-package com.yunho.data.remoteconfig
+package com.yunho.worktimemanagement.utils
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import org.json.JSONObject
 
 class RemoteConfigUtil {
+
+    private val config by lazy {
+        FirebaseRemoteConfig.getInstance()
+    }
 
     companion object {
         private var mInstance: RemoteConfigUtil? = null
@@ -35,5 +40,5 @@ class RemoteConfigUtil {
         }
     }
 
-    fun getLoginUrl() = FirebaseRemoteConfig.getInstance().getString("login_url")
+    fun getLoginUrl(): String = config.getString("login_url")
 }
