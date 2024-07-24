@@ -29,6 +29,8 @@ class GroupwareCrawler(
                     if (isLogin) {
                         val jsCode =
                             """
+                        let onOff = document.getElementsByClassName("badge lg black badge-off")[0].innerText;
+                        if (onOff == "OFF") return []; // 출근 안찍혀있을때
                         let e = document.getElementsByClassName('btn btn-md line-1');
                         let workText = [e[0].innerText, e[1].innerText];
                         return workText;
