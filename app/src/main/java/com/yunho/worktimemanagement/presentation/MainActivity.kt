@@ -4,6 +4,7 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.yunho.worktimemanagement.databinding.ActivityMainBinding
@@ -28,10 +29,9 @@ class MainActivity : AppCompatActivity(), Contract.View {
 
     private fun startWorkManager() {
         Log.e("startWorkManager", "++startWorkManager++")
-        WorkManager.getInstance(this).cancelAllWork()
         val calendar: Calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 20)
-        calendar.set(Calendar.MINUTE, 40)
+        calendar.set(Calendar.HOUR_OF_DAY, 21)
+        calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
 
         var initialDelay: Long = calendar.timeInMillis - System.currentTimeMillis()
@@ -44,6 +44,6 @@ class MainActivity : AppCompatActivity(), Contract.View {
             .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
             .build()
 
-        WorkManager.getInstance(this).enqueue(workRequest)
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork("SlackNoti", ExistingPeriodicWorkPolicy.REPLACE, workRequest)
     }
 }
