@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [WorkTimeListEntity::class], version = 1)
 abstract class RoomDB : RoomDatabase() {
 
-    abstract fun getWorkTimeDAO(): WorkTimeDAO
+    internal abstract fun getWorkTimeDAO(): WorkTimeDAO
 
     companion object {
         private var instance: RoomDB? = null

@@ -3,7 +3,7 @@ package com.yunho.data.local
 import androidx.room.*
 
 @Dao
-interface WorkTimeDAO {
+internal interface WorkTimeDAO {
 
     @Insert(onConflict= OnConflictStrategy.REPLACE)
     fun insertWorkTime(entity: WorkTimeListEntity): Long
