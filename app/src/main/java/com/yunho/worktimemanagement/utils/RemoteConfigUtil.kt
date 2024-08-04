@@ -41,4 +41,15 @@ class RemoteConfigUtil {
     }
 
     fun getLoginUrl(): String = config.getString("login_url")
+
+    fun getUserAgent(): String = config.getString("user_agent")
+
+    fun getBeforeJS(): String = getCrawlingJSObject().getString("before_login")
+
+    fun getAfterJS(): String = getCrawlingJSObject().getString("after_login")
+
+    private fun getCrawlingJSObject(): JSONObject {
+        val json = config.getString("crawling_js")
+        return JSONObject(json)
+    }
 }
