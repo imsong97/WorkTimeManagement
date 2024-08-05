@@ -32,10 +32,16 @@ class GroupwareCrawler(
                         val jsCode =
                             """
                         let onOff = document.getElementsByClassName("badge lg black badge-off");
-                        if (onOff.length != 0 && onOff[0].innerText === "OFF") return []; // 출근 안찍혀있을때
                         let e = document.getElementsByClassName('btn btn-md line-1');
-                        let workText = [e[0].innerText, e[1].innerText];
-                        return workText;
+                        let startTime = e[0].innerText;
+                        let endTime = e[1].innerText;
+                        if (startTime.startsWith("출근") || endTime.startsWith("퇴근")) {
+                            return [startTime, endTime];
+                        } else if (onOff.length != 0 && onOff[0].innerText === "OFF") {
+                            return ["OFF"];
+                        } else {
+                            return [];
+                        }
                         """
                                 .trimIndent()
 
