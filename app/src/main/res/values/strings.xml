@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">WorkTimeManagement</string>
+
+    <string name="today_title_default">0000.00.00 (목)</string>
+    <string name="setting_text">이번 달 설정</string>
+    <string name="today_work_time_title">오늘 근무시간</string>
+    <string name="today_work_time_default">0시간 0분</string>
+    <string name="go_work_text_default">출근 00:00</string>
+    <string name="get_off_work_text_default">퇴근 00:00</string>
+    <string name="month_total_title">이번 달 누적 시간</string>
+    <string name="month_total_time_default">00:00 / 00:00</string>
+    <string name="time_difference_default">(+0시간 0분)</string>
+    <string name="show_last_data_text">지난 기록 보기</string>
 </resources>
