@@ -13,7 +13,7 @@ class GroupwareCrawler(
 
     private var isLogin = false
 
-    fun init(context: Context, crawlerModel: CrawlerModel) {
+    fun init(crawlerModel: CrawlerModel) {
         println("++++++++++CrawlerModel : ${crawlerModel}+++++++++++")
         deleteCookie()
 
@@ -29,18 +29,31 @@ class GroupwareCrawler(
                     println(url)
 
                     if (isLogin) {
-                        val jsCode = crawlerModel.afterLoginJS.trimIndent()
+                        val jsCode =
+                            """
+                        let onOff = document.getElementsByClassName("badge lg black badge-off");
+                        if (onOff.length != 0 && onOff[0].innerText === "OFF") return []; // 출근 안찍혀있을때
+                        let e = document.getElementsByClassName('btn btn-md line-1');
+                        let workText = [e[0].innerText, e[1].innerText];
+                        return workText;
+                        """
+                                .trimIndent()
 
                         webView.evaluateJavascript("(function() {$jsCode; })();") {
                             val textArray = it.replace("[", "").replace("]", "").split(",")
                             println("+++++evaluateJavascript++")
-                            println("${textArray[0]}") // "출근 / 09:51"
+                            println("${textArray}") // "출근 / 09:51"
                             println("+++++evaluateJavascript++")
                             crawlerListener.loginSuccess(textArray)
                         }
                     } else {
                         isLogin = true
-                        val jsCode = crawlerModel.beforeLoginJS.trimIndent()
+                        val jsCode =
+                            """
+                        document.getElementById('user_pwd').value = '${crawlerModel.pw}';
+                        document.getElementsByClassName('btn_submit')[0].click();
+                        """
+                                .trimIndent()
 
                         webView.evaluateJavascript(jsCode, null)
                     }
