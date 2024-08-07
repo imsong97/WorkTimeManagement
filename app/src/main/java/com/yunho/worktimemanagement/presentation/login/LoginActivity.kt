@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (preferenceWrapper.isAutoLogin()) {
-            startWorkTimeActivity()
+            startWorkTimeActivity(isAutoLogin = true)
             return
         }
 
@@ -25,15 +25,20 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             if (binding.keepLogin.isChecked) {
                 preferenceWrapper.setAutoLogin(true)
-                preferenceWrapper.setId(binding.textId.text.toString())
+                preferenceWrapper.setId("${binding.textId.text.trim()}@enuri.com")
                 preferenceWrapper.setPassword(binding.textPassword.text.toString())
             }
             startWorkTimeActivity()
         }
     }
 
-    private fun startWorkTimeActivity() {
-        Intent(this, WorkTimeMainActivity::class.java).also {
+    private fun startWorkTimeActivity(isAutoLogin: Boolean = false) {
+        Intent(this, WorkTimeMainActivity::class.java).apply {
+            if (!isAutoLogin) {
+                this.putExtra("login_id", "${binding.textId.text.trim()}@enuri.com")
+                this.putExtra("login_pw", "${binding.textPassword.text}")
+            }
+        }.also {
             startActivity(it)
         }
         finish()

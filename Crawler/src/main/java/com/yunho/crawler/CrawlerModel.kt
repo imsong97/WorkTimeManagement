@@ -5,6 +5,6 @@ data class CrawlerModel(
     val userAgent: String,
     val id: String,
     val pw: String,
-    val beforeLoginJS: String,
-    val afterLoginJS: String
+    val beforeLoginJS: String = "",
+    val afterLoginJS: String = ""
 )
