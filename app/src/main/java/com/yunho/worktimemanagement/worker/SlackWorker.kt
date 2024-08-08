@@ -1,4 +1,4 @@
-package com.yunho.worktimemanagement.presentation.worker
+package com.yunho.worktimemanagement.worker
 
 import android.content.Context
 import android.util.Log
@@ -23,9 +23,9 @@ class SlackWorker(
         return SlackRepository.instance?.sendSlackMessage("$currentTime : use worker")
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
-            ?.doOnSuccess { result -> }
-            ?.doOnError { error -> }
-            ?.map { result -> Result.success() }
+//            ?.doOnSuccess { _ -> }
+//            ?.doOnError { _ -> }
+            ?.map { _ -> Result.success() }
             ?.onErrorReturnItem(Result.failure())
             ?.blockingGet() ?: Result.success()
     }
