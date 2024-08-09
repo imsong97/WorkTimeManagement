@@ -48,8 +48,27 @@ class RemoteConfigUtil {
 
     fun getAfterJS(): String = getCrawlingJSObject().getString("after_login")
 
+    fun getMinWorkTime(year: String, month: String): Int {
+        val obj = getWorkTimeMinObject(year)
+        return if (obj.has(month)) {
+            obj.getInt(month)
+        } else {
+            0
+        }
+    }
+
     private fun getCrawlingJSObject(): JSONObject {
         val json = config.getString("crawling_js")
         return JSONObject(json)
+    }
+
+    private fun getWorkTimeMinObject(year: String): JSONObject {
+        val json = config.getString("work_time_month_min")
+        val obj = JSONObject(json)
+        return if (obj.has(year)) {
+             JSONObject(obj.getString(year))
+        } else {
+            JSONObject()
+        }
     }
 }
