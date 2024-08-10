@@ -1,12 +1,10 @@
 package com.yunho.crawler
 
-import android.content.Context
-import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-class GroupwareCrawler(
+internal class WorkTimeCrawler(
     private val crawlerListener: CrawlerListener,
     private val webView: WebView
 ) {
