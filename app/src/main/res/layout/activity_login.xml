@@ -72,7 +72,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="로그인"
-            android:background="@drawable/bg_border_round_8"
+            android:background="@drawable/bg_border_round_8_bdbdbd"
             app:layout_constraintEnd_toEndOf="@+id/text_password"
             app:layout_constraintStart_toStartOf="@+id/text_password"
             app:layout_constraintTop_toBottomOf="@+id/text_password" />
@@ -85,6 +85,16 @@
             android:text="로그인 유지"
             app:layout_constraintStart_toStartOf="@+id/layout_id"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+        <FrameLayout
+            android:id="@+id/loading_fragment"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,5 +10,6 @@
     <string name="month_total_title">이번 달 누적 시간</string>
     <string name="month_total_time_default">00:00 / 00:00</string>
     <string name="time_difference_default">(+0시간 0분)</string>
+    <string name="btn_today_setting_text">오늘 근무시간 설정</string>
     <string name="show_last_data_text">지난 기록 보기</string>
 </resources>
