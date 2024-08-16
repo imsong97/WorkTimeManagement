@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.os.Bundle
+import android.util.Log
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import com.yunho.worktimemanagement.R
@@ -49,6 +50,7 @@ class WorkTimePickerDialog : DialogFragment(), OnTimeSetListener {
     }
 
     override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
+        Log.d("WorkTimePickerDialog", "++onTimeSet $p0 / $p1 / $p2 ++")
         // TODO rx event
     }
 }

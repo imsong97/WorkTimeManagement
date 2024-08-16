@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_bdbdbd">
+        android:background="@color/transparent_black_50">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_contents"
             android:layout_width="0dp"
@@ -80,11 +81,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/color_bdbdbd"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_contents"
+            app:layout_constraintEnd_toEndOf="@+id/layout_contents"
             app:layout_constraintTop_toTopOf="@+id/layout_contents"
             app:layout_constraintBottom_toBottomOf="@+id/layout_contents"/>
 

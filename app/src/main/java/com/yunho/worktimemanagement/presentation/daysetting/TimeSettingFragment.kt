@@ -45,6 +45,10 @@ class TimeSettingFragment : Fragment() {
             endTime = it.getString("endTime", "00:00")
         }
 
+        binding.layoutBackground.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this@TimeSettingFragment)?.commitAllowingStateLoss()
+        }
+
         binding.layoutGoWork.setOnClickListener {
             showTimePicker(TimeType.START)
         }
