@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [WorkTimeListEntity::class], version = 1)
-abstract class RoomDB : RoomDatabase() {
+@Database(entities = [WorkTimeListEntity::class, TotalHourEntity::class], version = 1)
+internal abstract class RoomDB : RoomDatabase() {
 
     internal abstract fun getWorkTimeDAO(): WorkTimeDAO
 
