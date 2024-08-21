@@ -37,18 +37,18 @@ class WorkTimeManagementApp : Application() {
             } else {
                 PendingIntent.getBroadcast(this, 0, intent, 0)
             }
-            val calendar = Calendar.getInstance().apply {
-                this.set(Calendar.HOUR_OF_DAY, 18)
-                this.set(Calendar.MINUTE, 0)
-                this.set(Calendar.SECOND, 0)
-                if (this.timeInMillis < System.currentTimeMillis()) {
-                    this.add(Calendar.DAY_OF_YEAR, 1)
-                }
-            }
-
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
         }
 
+        val calendar = Calendar.getInstance().apply {
+            this.set(Calendar.HOUR_OF_DAY, 18)
+            this.set(Calendar.MINUTE, 0)
+            this.set(Calendar.SECOND, 0)
+            if (this.timeInMillis < System.currentTimeMillis()) {
+                this.add(Calendar.DAY_OF_YEAR, 1)
+            }
+        }
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
 
     }
 }
