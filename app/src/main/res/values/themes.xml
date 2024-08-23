@@ -13,4 +13,28 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Main" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/color_keycolor</item> <!--Status Bar 배경색-->
+        <item name="android:windowLightStatusBar">false</item> <!--Status Bar 아이콘의 색상 true:검은 아이콘, false:흰 아이콘-->
+
+        <!--액션모드 설정-->
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/white</item>
+
+        <item name="toolbarStyle">@style/ToolbarStyle</item> <!--Toolbar 스타일-->
+        <item name="actionMenuTextColor">@color/white</item> <!--액션 메뉴의 텍스트 색상-->
+        <item name="colorControlNormal">@color/black</item> <!--홈/뒤로가기 버튼의 색상-->
+        <item name="colorPrimary">@color/color_keycolor</item>
+    </style>
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/color_keycolor</item> <!-- Toolbar의 배경색-->
+        <item name="titleTextAppearance">@style/ToolbarTitleStyle</item>
+    </style>
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/white</item> <!-- Toolbar의 타이틀 텍스트 색상-->
+<!--        <item name="android:textSize">15dp</item> &lt;!&ndash; Toolbar의 타이틀 텍스트 사이즈&ndash;&gt;-->
+    </style>
+
+
 </resources>
