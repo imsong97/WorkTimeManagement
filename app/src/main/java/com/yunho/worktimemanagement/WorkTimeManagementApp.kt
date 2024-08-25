@@ -8,8 +8,9 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
-import com.yunho.worktimemanagement.utils.RemoteConfigUtil
+import com.yunho.worktimemanagement.components.BatteryChargeReceiver
 import com.yunho.worktimemanagement.components.TimeEventReceiver
+import com.yunho.worktimemanagement.utils.RemoteConfigUtil
 
 
 class WorkTimeManagementApp : Application() {
@@ -18,26 +19,30 @@ class WorkTimeManagementApp : Application() {
         RemoteConfigUtil.instance?.init()
 //        PreferenceWrapper(this).setAutoLogin(false)
         setAlarmManager()
+
+        Intent(this, BatteryChargeReceiver::class.java).also {
+            sendBroadcast(it)
+        }
     }
 
     fun setAlarmManager() {
         Log.e("WorkTimeManagementApp", "++setAlarmManager++")
         val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, TimeEventReceiver::class.java)
-        var pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         } else {
-            PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_NO_CREATE)
+            PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
         // 최초 등록
-        if (pendingIntent == null) {
-            pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-            } else {
-                PendingIntent.getBroadcast(this, 0, intent, 0)
-            }
-        }
+//        if (pendingIntent == null) {
+//            pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+//                PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+//            } else {
+//                PendingIntent.getBroadcast(this, 0, intent, 0)
+//            }
+//        }
 
         val calendar = Calendar.getInstance().apply {
             this.set(Calendar.HOUR_OF_DAY, 18)
@@ -48,7 +53,7 @@ class WorkTimeManagementApp : Application() {
             }
         }
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
 }
