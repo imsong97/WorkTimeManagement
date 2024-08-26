@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WorkTimeManagement</string>
 
+    <string name="login_guide_text">로그인유지 설정을 하지 않으면 자동으로 로그인이 되지 않아요.\n계속할까요?</string>
     <string name="today_title_default">0000.00.00 (목)</string>
     <string name="setting_text">이번 달 설정</string>
     <string name="today_work_time_title">오늘 근무시간</string>
@@ -12,4 +13,6 @@
     <string name="time_difference_default">(+0시간 0분)</string>
     <string name="btn_today_setting_text">오늘 근무시간 설정</string>
     <string name="show_last_data_text">지난 기록 보기</string>
+    <string name="setting_cell_default"> </string>
+    <string name="setting_cell_logout">로그아웃</string>
 </resources>

@@ -26,8 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".presentation.main.WorkTimeMainActivity"
             android:theme="@style/Theme.Main"/>
+
+        <activity android:name=".presentation.appsetting.AppSettingActivity"
+            android:theme="@style/Theme.Main.White"/>
 
         <receiver android:name=".components.TimeEventReceiver" android:exported="false" />
         <receiver android:name=".components.BatteryChargeReceiver" android:exported="false"/>

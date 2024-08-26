@@ -2,6 +2,7 @@ package com.yunho.worktimemanagement.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.yunho.worktimemanagement.databinding.ActivityLoginBinding
 import com.yunho.worktimemanagement.presentation.main.WorkTimeMainActivity
@@ -27,8 +28,10 @@ class LoginActivity : AppCompatActivity() {
                 preferenceWrapper.setAutoLogin(true)
                 preferenceWrapper.setId("${binding.textId.text.trim()}@enuri.com")
                 preferenceWrapper.setPassword(binding.textPassword.text.toString())
+                startWorkTimeActivity()
+            } else {
+                showGuideDialog()
             }
-            startWorkTimeActivity()
         }
     }
 
@@ -42,5 +45,15 @@ class LoginActivity : AppCompatActivity() {
             startActivity(it)
         }
         finish()
+    }
+
+    private fun showGuideDialog() {
+        AlertDialog.Builder(this)
+            .setMessage("")
+            .setPositiveButton("네") { _, _ ->
+                startWorkTimeActivity()
+            }
+            .setNegativeButton("아니요", null)
+            .show()
     }
 }

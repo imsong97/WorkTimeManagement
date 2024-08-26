@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/app_setting"
+        android:id="@+id/btn_more"
         app:showAsAction="always"
-        android:title="설정"
-        android:icon="@drawable/ic_setting_ffffff"/>
+        android:title="더보기"
+        android:icon="@drawable/ic_more_ffffff"/>
 </menu>
