@@ -8,7 +8,7 @@ data class WorkTimeListEntity(
     @PrimaryKey(autoGenerate = true)
     val index: Long? = null,
     var date: String? = null, // 2024.08.02 (금)
-    var dateForLong: Long? = null, // Locale.now() -> milliseconds
+    var dateForLong: Long? = null, // yyyy-MM-dd to milliseconds
     var startTime: String? = null, // 09:00
     var endTime: String? = null, // 18:00
     var dayOffTime: Int = 0, // 0, 2, 4, 6, 8

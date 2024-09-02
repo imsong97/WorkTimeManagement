@@ -23,6 +23,9 @@ internal interface WorkTimeDAO {
     @Query("SELECT * FROM WorkAttendance WHERE `index` = :idx")
     fun getWorkTimeData(idx: Long): WorkTimeListEntity
 
+    @Query("SELECT * FROM WorkAttendance WHERE `dateForLong` = :dateForLong")
+    fun getWorkTimeDataWithDate(dateForLong: Long): WorkTimeListEntity
+
     @Query("DELETE FROM WorkAttendance")
     fun deleteALL(): Int
 }

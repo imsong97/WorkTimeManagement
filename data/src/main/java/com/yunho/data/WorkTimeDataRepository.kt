@@ -58,6 +58,12 @@ class WorkTimeDataRepository(private val context: Context) {
             it.onSuccess(data)
         }
 
+    fun getWorkTimeDataWithDate(date: Long) =
+        Single.create {
+            val data = workTimeDAO?.getWorkTimeDataWithDate(date) ?: WorkTimeListEntity()
+            it.onSuccess(data)
+        }
+
     fun deleteAll() =
         Single.create {
             val result = workTimeDAO?.deleteALL() ?: -1
