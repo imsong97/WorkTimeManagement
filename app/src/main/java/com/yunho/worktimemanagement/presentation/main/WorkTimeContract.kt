@@ -8,7 +8,7 @@ interface WorkTimeContract {
     }
     interface Presenter {
         fun sendSlackMessage()
-        fun insertData(context: Context)
+        fun insertData(timeArray: List<String>, todayMilli: Long)
         fun dispose()
     }
 }

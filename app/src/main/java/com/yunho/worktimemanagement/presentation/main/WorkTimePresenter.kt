@@ -5,15 +5,19 @@ import com.yunho.data.SlackRepository
 import com.yunho.data.WorkTimeDataRepository
 import com.yunho.data.local.WorkTimeListEntity
 import com.yunho.worktimemanagement.utils.ContextWrapper
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class WorkTimePresenter(
     private val view: WorkTimeContract.View,
-    private val repository: WorkTimeDataRepository,
+    private val workTimeDataRepository: WorkTimeDataRepository,
     private val contextWrapper: ContextWrapper
 ) : WorkTimeContract.Presenter {
 
@@ -35,7 +39,28 @@ class WorkTimePresenter(
             }
     }
 
-    override fun insertData(context: Context) {
+    override fun insertData(timeArray: List<String>, todayMilli: Long) {
+        workTimeDataRepository.getWorkTimeDataWithDate(todayMilli)
+            .subscribeOn(Schedulers.io())
+            .map {
+                /**
+                 * todayMilli로 검색해서 없으면 insert
+                 * 있으면 update
+                 * */
+                val entity = if (it.index == null) {
+
+                } else {
+
+                }
+            }
+            .subscribe({
+
+            }, {
+                it.printStackTrace()
+            })
+            .also {
+                compositeDisposable.add(it)
+            }
     }
 
     override fun dispose() {
